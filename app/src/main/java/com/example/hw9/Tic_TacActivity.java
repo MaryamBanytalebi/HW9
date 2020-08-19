@@ -40,6 +40,16 @@ public class Tic_TacActivity extends AppCompatActivity {
         mBtn_Row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container_TicToc);
+
+                if (fragment == null) {
+                    Tic_TacFragment cheatFragment = new Tic_TacFragment();
+                    fragmentManager
+                            .beginTransaction()
+                            .add(R.id.fragment_container_TicToc, cheatFragment)
+                            .commit();
+                }
 
             }
         });
