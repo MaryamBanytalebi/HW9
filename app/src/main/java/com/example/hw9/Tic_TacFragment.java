@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 public class Tic_TacFragment extends Fragment implements View.OnClickListener {
     private Button[][] buttons=new Button[3][3];
+    private int[][] buttonResId={{R.id.button00, R.id.button01, R.id.button02},
+            {R.id.button10, R.id.button11, R.id.button12},
+            {R.id.button20, R.id.button21, R.id.button22} };
     private TextView mTxtPlayer1,mTxtPlayer2;
     private boolean mPlayer1Turn=true;
     private int mRoundCount;
@@ -51,9 +54,9 @@ public class Tic_TacFragment extends Fragment implements View.OnClickListener {
         findViews(view);
         for (int i = 0 ; i < 3 ; i++){
             for (int j = 0; j < 3; j++) {
-                String buttonID="button_"+i+j;
+                String buttonID="button_"+ i+ j;
                 int resID=getResources().getIdentifier(buttonID,"id",getActivity().getPackageName());
-                buttons[i][j]=view.findViewById(resID);
+                buttons[i][j]=view.findViewById(buttonResId[i][j]);
                 buttons[i][j].setOnClickListener(Tic_TacFragment.this);
             }
         }
